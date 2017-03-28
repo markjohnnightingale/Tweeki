@@ -29,12 +29,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * SkinTemplate class for Tweeki skin
  * @ingroup Skins
  */
-class SkinTweeki extends SkinTemplate {
+class SkinTweekiMFC2016 extends SkinTemplate {
 
 	protected static $bodyClasses = array( 'tweeki-animateLayout' );
 
 	var $skinname = 'tweeki', $stylename = 'tweeki',
-		$template = 'TweekiTemplate', $useHeadElement = true;
+		$template = 'TweekiMFC2016Template', $useHeadElement = true;
 
 	/**
 	 * Initializes output page and sets up skin-specific parameters
@@ -56,6 +56,10 @@ class SkinTweeki extends SkinTemplate {
 		);
 
 		$out->addMeta("viewport", "width=device-width, initial-scale=1.0");
+		$out->addHeadItem(
+				'www-headerfooter',
+				file_get_contents('http://www2016.mfc.bayern/headerfooter-stylesheets')
+			);
 		$out->addModules( 'skins.tweeki.scripts' );
 		if( $wgTweekiSkinUseTooltips ) {
 			$out->addModules( 'skins.tweeki.tooltips' );
@@ -110,7 +114,7 @@ class SkinTweeki extends SkinTemplate {
  * QuickTemplate class for Tweeki skin
  * @ingroup Skins
  */
-class TweekiTemplate extends BaseTemplate {
+class TweekiMFC2016Template extends BaseTemplate {
 
 	/* Functions */
 
@@ -256,7 +260,7 @@ class TweekiTemplate extends BaseTemplate {
 			$contentclass .= ' with-navbar-fixed';
 		}
 
-		$skin->renderNavbar();
+		$skin->renderHeader();
 ?>
 		<div id="mw-page-base"></div>
 		<div id="mw-head-base"></div>
@@ -581,7 +585,7 @@ class TweekiTemplate extends BaseTemplate {
 						if ( empty ( $content ) ) {
 							if( strpos( $name, '|' ) !== false ) {
 								/* TODO: replace $wgParser with local parser - might not work properly */
-								$sidebarItem = TweekiHooks::parseButtonLink( $name, $wgParser, false );
+								$sidebarItem = TweekiMFC2016Hooks::parseButtonLink( $name, $wgParser, false );
 								$sidebar[] = $sidebarItem[0];
 								continue;
 							}
@@ -705,7 +709,13 @@ class TweekiTemplate extends BaseTemplate {
 			<!-- /subnav -->
 		<?php }
 	}
-		
+	
+	/**
+	 * Render Header (from WWW)
+	 */
+	public function renderHeader() {
+		echo file_get_contents('http://www2016.mfc.bayern/header');
+	}
 	
 	/**
 	 * Render Navbar
@@ -852,14 +862,8 @@ class TweekiTemplate extends BaseTemplate {
 	 * Render Footer
 	 */
 	public function renderFooter() {
-		$options = $this->getParsingOptions( 'footer' );
-		if ( $this->checkVisibility( 'footer' ) ) { ?>
-			<!-- footer -->
-			<div id="footer" role="contentinfo" class="footer <?php $this->msg( 'tweeki-container-class' ); ?> <?php $this->msg( 'tweeki-footer-class' ); ?>"<?php $this->html( 'userlangattributes' ) ?>>
-			<?php $this->buildItems( wfMessage( 'tweeki-footer' )->plain(), $options, 'footer' ); ?>
-			</div>
-			<!-- /footer -->
-		<?php }
+		echo file_get_contents('http://www2016.mfc.bayern/footer');
+		echo file_get_contents('http://www2016.mfc.bayern/scripts');
 	}
 		
 
@@ -920,7 +924,7 @@ class TweekiTemplate extends BaseTemplate {
 		foreach( $buttons as $button ) {
 			/* standard button rendering */
 			if( !isset( $button['special'] ) ) {
-				echo TweekiHooks::renderButtons( array( $button ), $options );
+				echo TweekiMFC2016Hooks::renderButtons( array( $button ), $options );
 			}
 			/* special cases */
 			else {
@@ -946,7 +950,7 @@ class TweekiTemplate extends BaseTemplate {
 		$localParser->clearState();
 
 		if( count( $customItems ) !== 0 ) {
-			$newButtons = TweekiHooks::parseButtons( implode( chr(10), $customItems ), $localParser, false );
+			$newButtons = TweekiMFC2016Hooks::parseButtons( implode( chr(10), $customItems ), $localParser, false );
 			$buttons = array_merge( $buttons, $newButtons );
 			$customItems = array();
 		}
@@ -1022,7 +1026,7 @@ class TweekiTemplate extends BaseTemplate {
 		$dropdown['href'] = '#';
 		$dropdown['type'] = 'button';
 		$dropdown['id'] = 'n-login-ext';
-		$renderedDropdown = TweekiHooks::makeLink( $dropdown);
+		$renderedDropdown = TweekiMFC2016Hooks::makeLink( $dropdown);
 		$wrapperclass = ( $context == 'footer' ) ? 'dropup' : 'nav';
 
 		echo '<li class="' . $wrapperclass . '">

@@ -23,10 +23,10 @@
  */
 
 if ( function_exists( 'wfLoadSkin' ) ) {
-		wfLoadSkin( 'Tweeki' );
+		wfLoadSkin( 'TweekiMFC2016' );
 		// Keep i18n globals so mergeMessageFileList.php doesn't break
-		$wgMessagesDirs['Tweeki'] = __DIR__ . '/i18n';
-		$wgExtensionMessagesFiles['TweekiMagic'] = __DIR__ . '/Tweeki.i18n.magic.php';
+		$wgMessagesDirs['TweekiMFC2016'] = __DIR__ . '/i18n';
+		$wgExtensionMessagesFiles['TweekiMFC2016Magic'] = __DIR__ . '/TweekiMFC2016.i18n.magic.php';
 		wfWarn(
 						'Deprecated PHP entry point used for FooBar skin. Please use wfLoadSkin instead, ' .
 						'see https://www.mediawiki.org/wiki/Extension_registration for more details.'

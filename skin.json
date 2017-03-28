@@ -1,24 +1,24 @@
 {
-	"name": "Tweeki",
+	"name": "TweekiMFC2016",
 	"version": "0.1.3",
 	"author": "Tobias Haider, Garrett LeSage",
 	"url": "http://tweeki.thai-land.at",
 	"descriptionmsg": "tweeki-desc",
 	"type": "skin",
 	"ValidSkinNames": {
-		"tweeki": "Tweeki"
+		"tweekimfc2016": "TweekiMFC2016"
 	},
 	"MessagesDirs": {
-		"SkinTweeki": [
+		"SkinTweekiMFC2016": [
 			"i18n"
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"TweekiMagic": "Tweeki.i18n.magic.php"
+		"TweekiMFC2016Magic": "TweekiMFC2016.i18n.magic.php"
 	},
 	"AutoloadClasses": {
-		"SkinTweeki": "Tweeki.skin.php",
-		"TweekiHooks": "Tweeki.hooks.php"
+		"SkinTweekiMFC2016": "TweekiMFC2016.skin.php",
+		"TweekiMFC2016Hooks": "TweekiMFC2016.hooks.php"
 	},
 	"ResourceModules": {
 		"skins.tweeki.bootstrap.styles": {
@@ -42,6 +42,9 @@
 				},
 				"mediawiki/interface.css": {
 					"media": "screen"
+				},
+				"custom-css.css": {
+					"media":"screen"
 				}
 			}
 		},
@@ -112,19 +115,19 @@
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "",
-		"remoteSkinPath": "Tweeki"
+		"remoteSkinPath": "TweekiMFC2016"
 	},
 	"Hooks": {
-		"GetPreferences": "TweekiHooks::getPreferences",
+		"GetPreferences": "TweekiMFC2016Hooks::getPreferences",
 		"ParserFirstCallInit": [
-			"TweekiHooks::ButtonsSetup",
-			"TweekiHooks::LabelSetup",
-			"TweekiHooks::AccordionSetup",
-			"TweekiHooks::TweekiHideSetup"
+			"TweekiMFC2016Hooks::ButtonsSetup",
+			"TweekiMFC2016Hooks::LabelSetup",
+			"TweekiMFC2016Hooks::AccordionSetup",
+			"TweekiMFC2016Hooks::TweekiHideSetup"
 		],
-		"DoEditSectionLink": "TweekiHooks::EditSectionLinkButton",
-		"ParserBeforeTidy": "TweekiHooks::HeadlineFix",
-		"AfterFinalPageOutput": "TweekiHooks::onAfterFinalPageOutput"
+		"DoEditSectionLink": "TweekiMFC2016Hooks::EditSectionLinkButton",
+		"ParserBeforeTidy": "TweekiMFC2016Hooks::HeadlineFix",
+		"AfterFinalPageOutput": "TweekiMFC2016Hooks::onAfterFinalPageOutput"
 	},
 	"config": {
 		"TweekiSkinHideAll": {
@@ -194,6 +197,6 @@
 			"rightwidth": 2
 		}
 	},
-	"callback": "TweekiHooks::onRegistration",
+	"callback": "TweekiMFC2016Hooks::onRegistration",
 	"manifest_version": 1
 }

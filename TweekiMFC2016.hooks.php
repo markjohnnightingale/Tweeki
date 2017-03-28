@@ -21,7 +21,7 @@
  * @ingroup Skins
  */
 
-class TweekiHooks {
+class TweekiMFC2016Hooks {
 
 	protected static $anchorID = 0;
 	
@@ -69,9 +69,9 @@ class TweekiHooks {
 	 * @param $parser Parser current parser
 	 */
 	static function TweekiHideSetup( Parser $parser ) {
-		$parser->setFunctionHook( 'tweekihide', 'TweekiHooks::setHiddenElements' );
-		$parser->setHook( 'legend', 'TweekiHooks::legend' );
-		$parser->setHook( 'footer', 'TweekiHooks::footer' );
+		$parser->setFunctionHook( 'tweekihide', 'TweekiMFC2016Hooks::setHiddenElements' );
+		$parser->setHook( 'legend', 'TweekiMFC2016Hooks::legend' );
+		$parser->setHook( 'footer', 'TweekiMFC2016Hooks::footer' );
 		return true;
 	}
 
@@ -113,7 +113,7 @@ class TweekiHooks {
 	 * @param $parser Parser current parser
 	 */
 	static function AccordionSetup( Parser $parser ) {
-		$parser->setHook( 'accordion', 'TweekiHooks::buildAccordion' );
+		$parser->setHook( 'accordion', 'TweekiMFC2016Hooks::buildAccordion' );
 		return true;
 	}
 
@@ -153,7 +153,7 @@ class TweekiHooks {
 	 * @param $parser Parser current parser
 	 */
 	static function LabelSetup( Parser $parser ) {
-		$parser->setHook( 'label', 'TweekiHooks::buildLabel' );
+		$parser->setHook( 'label', 'TweekiMFC2016Hooks::buildLabel' );
 		return true;
 	}
 	
@@ -178,7 +178,7 @@ class TweekiHooks {
 		global $wgTweekiSkinUseBtnParser;
 		
 		if ( true === $wgTweekiSkinUseBtnParser ) {
-			$parser->setHook( 'btn', 'TweekiHooks::buildButtons' );
+			$parser->setHook( 'btn', 'TweekiMFC2016Hooks::buildButtons' );
 		}
 		return true;
 	}
@@ -220,8 +220,8 @@ class TweekiHooks {
 
 		foreach ( $buttongroups as $buttongroup ) {
 			$buttons = array();
-			$buttons = TweekiHooks::parseButtons( $buttongroup, $parser, $frame );
-			$renderedButtons .= TweekiHooks::renderButtons( $buttons, $args );
+			$buttons = TweekiMFC2016Hooks::parseButtons( $buttongroup, $parser, $frame );
+			$renderedButtons .= TweekiMFC2016Hooks::renderButtons( $buttons, $args );
 		}
 
 		// more than one buttongroup build a toolbar
@@ -253,7 +253,7 @@ class TweekiHooks {
 			
 			// simple buttons
 			if ( strpos( $line, '*' ) !== 0 ) {
-				$buttons = array_merge( $buttons, TweekiHooks::parseButtonLink( trim( $line ), $parser, $frame ) );
+				$buttons = array_merge( $buttons, TweekiMFC2016Hooks::parseButtonLink( trim( $line ), $parser, $frame ) );
 				end( $buttons );
 				$currentparentkey = key($buttons);
 			}
@@ -270,7 +270,7 @@ class TweekiHooks {
 				if ( !isset( $buttons[$currentparentkey]['items'] ) ) {
 					$buttons[$currentparentkey]['items'] = array();
 				}
-				$buttons[$currentparentkey]['items'] = array_merge( $buttons[$currentparentkey]['items'], TweekiHooks::parseButtonLink( $cleanline, $parser, $frame ) );
+				$buttons[$currentparentkey]['items'] = array_merge( $buttons[$currentparentkey]['items'], TweekiMFC2016Hooks::parseButtonLink( $cleanline, $parser, $frame ) );
 			}
 		}
 		return $buttons;
@@ -303,7 +303,7 @@ class TweekiHooks {
 				$semanticHits = explode( ',', $semanticHits );
 				$semanticLinks = array();
 				foreach ( $semanticHits as $semanticHit ) {
-					$semanticLink = TweekiHooks::parseButtonLink( $semanticHit, $parser, $frame );
+					$semanticLink = TweekiMFC2016Hooks::parseButtonLink( $semanticHit, $parser, $frame );
 					$semanticLinks[] = $semanticLink[0];
 				}
 				return $semanticLinks;
@@ -536,16 +536,16 @@ class TweekiHooks {
 			// dropdown
 			if ( isset( $button['items'] ) ) {
 				if ( isset( $options['dropdownclass'] ) ) {
-					$renderedButtons .= TweekiHooks::buildDropdown( $button, $options['dropdownclass'] );
+					$renderedButtons .= TweekiMFC2016Hooks::buildDropdown( $button, $options['dropdownclass'] );
 				}
 				else {
-					$renderedButtons .= TweekiHooks::buildDropdown( $button );
+					$renderedButtons .= TweekiMFC2016Hooks::buildDropdown( $button );
 				}
 			}
 
 			// simple button
 			else {
-				$renderedButtons .= TweekiHooks::makeLink( $button, $btnoptions );
+				$renderedButtons .= TweekiMFC2016Hooks::makeLink( $button, $btnoptions );
 			}
 		}
 		// close wrapper
@@ -567,14 +567,14 @@ class TweekiHooks {
 
 		// split dropdown
 		if ( isset( $dropdown['href_implicit'] ) && $dropdown['href_implicit'] === false ) {
-			$renderedDropdown .= TweekiHooks::makeLink( $dropdown );
+			$renderedDropdown .= TweekiMFC2016Hooks::makeLink( $dropdown );
 			$caret = array(
 				'class' => 'dropdown-toggle ' . $dropdown['class'],
 				'href' => '#',
 				'html' => '&zwnj;<b class="caret"></b>',
 				'data-toggle' => 'dropdown'
 				);
-			$renderedDropdown .= TweekiHooks::makeLink( $caret );
+			$renderedDropdown .= TweekiMFC2016Hooks::makeLink( $caret );
 		}
 
 		// ordinary dropdown
@@ -583,10 +583,10 @@ class TweekiHooks {
 			$dropdown['data-toggle'] = 'dropdown';
 			$dropdown['html'] = $dropdown['html'] . ' <b class="caret"></b>';
 			$dropdown['href'] = '#';
-			$renderedDropdown .= TweekiHooks::makeLink( $dropdown );
+			$renderedDropdown .= TweekiMFC2016Hooks::makeLink( $dropdown );
 		}
 
-		$renderedDropdown .= TweekiHooks::buildDropdownMenu( $dropdown['items'], $dropdownclass );
+		$renderedDropdown .= TweekiMFC2016Hooks::buildDropdownMenu( $dropdown['items'], $dropdownclass );
 		return $renderedDropdown;
 	}
 
@@ -611,7 +611,7 @@ class TweekiHooks {
 			// standard menu entry
 			else {
 				$entry['tabindex'] = '-1';
-				$renderedMenu .= TweekiHooks::makeListItem( $entry );
+				$renderedMenu .= TweekiMFC2016Hooks::makeListItem( $entry );
 			}
 		}
 
@@ -727,7 +727,7 @@ class TweekiHooks {
 		if ( isset( $item['links'] ) ) {
 			$html = '';
 			foreach ( $item['links'] as $linkKey => $link ) {
-				$html .= TweekiHooks::makeLink( $link, $options );
+				$html .= TweekiMFC2016Hooks::makeLink( $link, $options );
 			}
 		} else {
 			$link = $item;
@@ -741,7 +741,7 @@ class TweekiHooks {
 				// generating tooltips and accesskeys.
 				$link['single-id'] = $item['id'];
 			}
-			$html = TweekiHooks::makeLink( $link, $options );
+			$html = TweekiMFC2016Hooks::makeLink( $link, $options );
 		}
 
 		$attrs = array();

@@ -1,0 +1,188 @@
+@guidecolor:#ba65a6;
+@light-grey:#92938f;
+@button-grey: #b7b7b7;
+@header-font: 'Titillium Web', sans-serif;
+@header-font-weight: 900;
+@body-font: 'Titillium Web', sans-serif;
+@panel-background: #f5f5f6;
+body {
+	position: relative;
+	height:auto !important;
+}
+.btn {
+	background: @guidecolor;
+	border: 0;
+	border-radius: 0;
+	padding: 9px 9px;
+	text-shadow: none;
+	text-transform: uppercase;
+	font-family:@body-font;
+	font-weight:bold;
+	&#ca-views, &#t-tools, &#pt-personaltools {
+		background:@button-grey;
+		&:hover, &:focus {
+			background: darken(@button-grey, 10%);
+
+		}
+	}
+}
+.btn:hover, .btn:focus {
+	background: darken(@guidecolor, 10%);
+}
+
+#catlinks {
+	display:block;
+	border:none;
+	background-color:#f5f5f6;
+}
+
+.secondary-menu {
+	li {
+		a {
+			font-size:16px;
+		}
+	}
+}
+.color-bar {
+	background-color: @guidecolor;
+    padding: 46px 0px;
+
+	.color-bar-title {
+	    max-width: 1170px;
+	    margin: auto;
+	    color: white;
+	    font-family: @header-font;
+	    font-weight: 900;
+	    letter-spacing:1px;
+	    padding:0;
+	    @media screen and (max-width: 767px) {
+	    	padding:0 15px;
+	    }
+	}
+
+}
+
+#sidebar-right {
+	background: @panel-background;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+
+#tweekiTOC {
+	background-color: #fff;
+	padding: 0 10px;
+	margin-top:0px;
+	margin-bottom: 20px;
+	overflow: hidden;
+
+	#toctitle h2{
+		font-size: 17px;
+		color: black;
+		margin-top:0;
+		margin-top:10px;
+	}
+	#toc {
+		margin-bottom:10px;
+	}
+
+	#toc ul > li a {
+		color: #8a8b86;
+		font-size: 15px;
+	}
+	#toc ul > li a:hover, 
+	#toc ul > li a:active {
+		color: #000;
+
+	}
+}
+
+#contentwrapper {
+	padding-top: 10px;
+	/** Headings */
+	
+	h1 {
+		font-family: @header-font;
+		font-weight: @header-font-weight;
+		color: @guidecolor;
+		letter-spacing: 2px;
+	}
+	h1 {
+		font-size: 40px;
+	}
+	h2 {
+		color:@guidecolor;
+	}
+	h3 {
+		font-size:24px;
+	}
+
+	a {
+		color: @guidecolor;
+	}
+
+
+
+	.page-header {
+		border-bottom:none;
+	}
+	#mw-content-text {
+		p, li {
+			font-size:16px;
+		}
+	}
+	/** Thumbs  */
+	div.thumbinner {
+		border:none;
+		padding:0;
+		background-color:transparent;
+
+		.thumbimage {
+			border:none;
+		}
+		.thumbcaption {
+			font-size:14px;
+			color: @light-grey;
+		}
+	}
+
+	// Who by 
+	table.toccolours {
+		&, th, td {
+			background-color: @panel-background !important;
+			vertical-align: top;
+			font-size: 16px;
+		}
+
+	}
+
+	hr {
+		opacity: 0.3;
+	}
+}
+
+#content {
+	padding-left:0;
+	margin-left:-15px;
+}
+
+
+
+/** Positionning */
+
+.sidebar-wrapper {
+	position:absolute;
+	top:540px;
+
+	&.fixed {
+		position:fixed;
+		top:40px;
+
+	}
+	&.bottom {
+		bottom: 1200px;
+		top:auto !important;
+	}
+	@media screen and (max-width: 767px) {
+		position:static !important;
+	}
+}

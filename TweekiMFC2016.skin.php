@@ -56,9 +56,10 @@ class SkinTweekiMFC2016 extends SkinTemplate {
 		);
 
 		$out->addMeta("viewport", "width=device-width, initial-scale=1.0");
+		$out->addHeadItem('httpequiv', '<meta http-equiv="X-UA-Compatible" content="IE=edge">');
 		$out->addHeadItem(
 				'www-headerfooter',
-				file_get_contents('http://www2016.mfc.bayern/headerfooter-stylesheets')
+				file_get_contents('https://www2016.mfc.bayern/headerfooter-stylesheets')
 			);
 		$out->addModules( 'skins.tweeki.scripts' );
 		if( $wgTweekiSkinUseTooltips ) {
@@ -714,7 +715,10 @@ class TweekiMFC2016Template extends BaseTemplate {
 	 * Render Header (from WWW)
 	 */
 	public function renderHeader() {
-		echo file_get_contents('http://www2016.mfc.bayern/header');
+
+		$html = file_get_contents('https://www2016.mfc.bayern/header');
+		$html .= sprintf('<div class="color-bar"><h1 class="color-bar-title">Le Guide MFC</h1></div>');
+		echo $html;
 	}
 	
 	/**
@@ -862,8 +866,14 @@ class TweekiMFC2016Template extends BaseTemplate {
 	 * Render Footer
 	 */
 	public function renderFooter() {
-		echo file_get_contents('http://www2016.mfc.bayern/footer');
-		echo file_get_contents('http://www2016.mfc.bayern/scripts');
+		$options = $this->getParsingOptions( 'footer' );
+		?>
+		<div id="footer" role="contentinfo" class="footer <?php $this->msg( 'tweeki-container-class' ); ?> <?php $this->msg( 'tweeki-footer-class' ); ?>"<?php $this->html( 'userlangattributes' ) ?>>
+		<?php $this->buildItems( wfMessage( 'tweeki-footer' )->plain(), $options, 'footer' ); ?>
+		</div>
+		<?php
+		echo file_get_contents('https://www2016.mfc.bayern/footer');
+		echo file_get_contents('https://www2016.mfc.bayern/scripts');
 	}
 		
 

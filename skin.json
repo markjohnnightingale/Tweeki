@@ -42,10 +42,8 @@
 				},
 				"mediawiki/interface.css": {
 					"media": "screen"
-				},
-				"custom-css.css": {
-					"media":"screen"
 				}
+				
 			}
 		},
 		"skins.tweeki.externallinks.styles": {

@@ -67,7 +67,7 @@ jQuery( function( $ ) {
 			
 			// start scrollspy
 			$( '#toc ul' ).addClass( 'nav' );	
-			$( 'body' ).css( 'position', 'relative' ).scrollspy( { target: '#toc' } );
+			$( 'body' ).css( 'position', 'relative' ).scrollspy( { target: '.toc' } );
 			}
 		}
 
@@ -86,3 +86,15 @@ jQuery( function( $ ) {
 			}
 		});
 	});
+
+$(document).scroll('scroll, resize', function(){
+	if ($(document).scrollTop() > 400 ) {
+		if ($(document).scrollTop() > ( $(document).height() - $(window).height() - 300 )) {
+			$('.sidebar-wrapper').removeClass('fixed').addClass('bottom');
+		} else {
+			$('.sidebar-wrapper').addClass('fixed').removeClass('bottom');
+		}
+	} else {
+		$('.sidebar-wrapper').removeClass('fixed').removeClass('bottom');
+	}
+});
